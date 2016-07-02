@@ -1,0 +1,43 @@
+<% @title="Onemus login" %>
+<table>
+  <tr>
+    <td>
+      <h2>Create new user</h2>
+      <%= form_for :create, url: {action: "create"} do |f| %>
+        <p>
+          <%= f.label :username %><br>
+          <%= f.text_field :username %>
+        </p>
+
+        <p>
+          <%= f.label :password %><br>
+          <%= f.password_field :password %>
+        </p>
+        <p>
+          <%= f.label :confirm_password %><br>
+          <%= f.password_field :confirm_password %>
+        </p>
+        <p>
+          <%= f.submit "Create user" %>
+        </p>
+      <% end %>
+    </td>
+    <td>
+      <h2>Log in</h2>
+      <%= form_for :login, url: welcome_login_path do |f|%>
+        <p>
+          <%= f.label :username %><br>
+          <%= f.text_field :username %>
+        </p>
+
+        <p>
+          <%= f.label :password %><br>
+          <%= f.text_field :password %>
+        </p>
+        <p>
+          <%= f.submit "Login" %>
+        </p>
+      <% end %>
+    </td>
+  </tr>
+</table>
