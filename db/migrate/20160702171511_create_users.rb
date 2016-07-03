@@ -3,8 +3,9 @@ class CreateUsers < ActiveRecord::Migration
     create_table :users do |t|
       t.string :username
       t.string :password_digest
+      t.boolean :card_access, null: false, default: false
 
-      t.timestamp
+      t.timestamps
     end
   end
 end

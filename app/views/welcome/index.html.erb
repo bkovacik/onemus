@@ -2,7 +2,7 @@
 <table>
   <tr>
     <td>
-      <h2>Create new user</h2>
+      <h2>Signup</h2>
       <%= form_for :create, url: {action: "create"} do |f| %>
         <p>
           <%= f.label :username %><br>
@@ -18,13 +18,13 @@
           <%= f.password_field :confirm_password %>
         </p>
         <p>
-          <%= f.submit "Create user" %>
+          <%= f.submit "Sign up" %>
         </p>
       <% end %>
     </td>
     <td>
       <h2>Log in</h2>
-      <%= form_for :login, url: welcome_login_path do |f|%>
+      <%= form_for :login, url: sessions_login_path do |f|%>
         <p>
           <%= f.label :username %><br>
           <%= f.text_field :username %>
@@ -32,7 +32,7 @@
 
         <p>
           <%= f.label :password %><br>
-          <%= f.text_field :password %>
+          <%= f.password_field :password %>
         </p>
         <p>
           <%= f.submit "Login" %>
