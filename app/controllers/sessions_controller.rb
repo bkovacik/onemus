@@ -15,4 +15,9 @@ class SessionsController < ApplicationController
       session[:card] = user.first["card_access"]
     end
   end
+  def logout
+    puts "Logging out..."
+    reset_session
+    redirect_to "/welcome/index"
+  end
 end

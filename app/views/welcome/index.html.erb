@@ -3,7 +3,7 @@
   <tr>
     <td>
       <h2>Signup</h2>
-      <%= form_for :create, url: {action: "create"} do |f| %>
+      <%= form_for :create, url: welcome_create_path do |f| %>
         <p>
           <%= f.label :username %><br>
           <%= f.text_field :username %>
