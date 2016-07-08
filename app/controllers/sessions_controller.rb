@@ -16,7 +16,6 @@ class SessionsController < ApplicationController
     end
   end
   def logout
-    puts "Logging out..."
     reset_session
     redirect_to "/welcome/index"
   end

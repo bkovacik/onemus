@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
+  get 'include/footer'
+
+  get 'include/header'
+
   get 'create/new'
   get 'welcome/index'
   get 'welcome/login'
   get 'sessions/login'
+  get 'cards/cards'
 
   post 'welcome/create' 
   post 'welcome/login' => 'sessions#login' 
