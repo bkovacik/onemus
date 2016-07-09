@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get 'cards/cards'
 
   post 'welcome/create' 
-  post 'welcome/login' => 'sessions#login' 
+  post 'welcome/login' 
   post 'sessions/login'
   post 'sessions/logout'
 
