@@ -1,14 +1,16 @@
 <% @title="Onemus login" %>
 <div>
   <% flash.each do |key, value| %>
-    <div><%= value %></div>
+    <% value.each do |v| %>
+      <div><%= v %></div>
+    <% end %>
   <% end %>
 </div>
 <table>
   <tr>
     <td>
       <h2>Signup</h2>
-      <%= form_for :create, url: welcome_create_path, html: { id: "create_form" } do |f| %>
+      <%= form_for :create, url: welcome_create_path do |f| %>
         <p>
           <%= f.label :username %><br>
           <%= f.text_field :username %>
@@ -39,7 +41,6 @@
           <%= f.label :password %><br>
           <%= f.password_field :password %>
         </p>
-        <p id="login_error"></p>
         <p>
           <%= f.submit "Login" %>
         </p>

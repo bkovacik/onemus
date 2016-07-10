@@ -21,3 +21,15 @@
 
 en:
   hello: "Hello world"
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            username:
+              taken: "Username is in use."
+            password:
+              blank: "Password field is blank."
+            password_confirmation:
+              blank: "Password confirmation is blank."
+              confirmation: "Passwords don't match."

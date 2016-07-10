@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
     puts "%", user.class, "%"
     if user.empty?
       logout
-      flash[:errors] = "User not found."
+      (flash[:errors] ||= []) << "User not found."
       return
     end
 
@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
       session[:card] = user.first["card_access"]
     else
       logout
-      flash[:errors] = "Incorrect password."
+      (flash[:errors] ||= []) << "Incorrect password."
     end
   end
   def logout

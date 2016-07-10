@@ -4,7 +4,7 @@ class WelcomeController < ApplicationController
     @user = User.new(user_params)
 
     unless @user.save
-      flash[:errors] = @user.errors.messages.values
+      flash[:errors] = @user.errors.messages.values.flatten
       redirect_to "/welcome/index"
     end
   end
