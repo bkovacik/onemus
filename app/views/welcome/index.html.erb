@@ -1,4 +1,9 @@
 <% @title="Onemus login" %>
+<div>
+  <% flash.each do |key, value| %>
+    <div><%= value %></div>
+  <% end %>
+</div>
 <table>
   <tr>
     <td>
@@ -14,12 +19,11 @@
           <%= f.password_field :password %>
         </p>
         <p>
-          <%= f.label :confirm_password %><br>
-          <%= f.password_field :confirm_password%>
+          <%= f.label :password_confirmation, "Confirm password" %><br>
+          <%= f.password_field :password_confirmation %>
         </p>
-        <p id="create_error"></p>
         <p>
-          <%= f.submit "Sign up", onclick: "return check_create_form();" %>
+          <%= f.submit "Sign up" %>
         </p>
       <% end %>
     </td>
@@ -37,7 +41,7 @@
         </p>
         <p id="login_error"></p>
         <p>
-          <%= f.submit "Login", onclick: "return check_login_form();" %>
+          <%= f.submit "Login" %>
         </p>
       <% end %>
     </td>
