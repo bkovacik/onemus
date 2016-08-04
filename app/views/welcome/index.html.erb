@@ -1,9 +1,7 @@
 <% @title="Onemus login" %>
 <div>
-  <% flash.each do |key, value| %>
-    <% value.each do |v| %>
-      <div><%= v %></div>
-    <% end %>
+  <% flash[:errors].each do |v| %>
+    <div><%= v %></div>
   <% end %>
 </div>
 <table>
