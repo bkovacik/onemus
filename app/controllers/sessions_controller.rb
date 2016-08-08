@@ -1,7 +1,9 @@
 class SessionsController < ApplicationController
   def login
-    if !session[:user]
+    unless params[:login].nil?
       authenticate
+    else
+      logout
     end
   end
   def authenticate
@@ -9,10 +11,9 @@ class SessionsController < ApplicationController
     password = params[:login]["password"]
     
     user = User.where("username=?", username)
-    puts "%", user.class, "%"
     if user.empty?
       logout
-      (flash[:errors] ||= []) << "User not found."
+      (flash[:messages] ||= []) << "User not found."
       return
     end
 
@@ -21,10 +22,11 @@ class SessionsController < ApplicationController
       session[:card] = user.first["card_access"]
     else
       logout
-      (flash[:errors] ||= []) << "Incorrect password."
+      (flash[:messages] ||= []) << "Incorrect password."
     end
   end
   def logout
+    (flash[:messages] ||= []) << "Logged out."
     reset_session
     redirect_to "/welcome/index"
   end

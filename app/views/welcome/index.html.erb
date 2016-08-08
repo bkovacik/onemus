@@ -1,9 +1,5 @@
 <% @title="Onemus login" %>
-<div>
-  <% flash[:errors].each do |v| %>
-    <div><%= v %></div>
-  <% end %>
-</div>
+<%= render partial: "/include/header.html.erb" %>
 <table>
   <tr>
     <td>

@@ -1,14 +1,19 @@
+<h2>Card list</h2>
 <table>
-  <tr>
-    <td>
-      <h2>Add/change card</h2>
-      <%# %>
-      <%# end %>
-    </td>
-    <td>
-      <h2>Card list</h2>
-      <%# %>
-      <%# end %>
-    </td>
-  </tr>
+  <% @cards.each do |c| %>
+    <tr class="card">
+      <td><%= c['name'] %></td>
+      <td><%= c['cost'] %></td>
+      <!-- power and toughness -->
+      <td><%= (c['atk'].nil? or c['hp'].nil?) ? "" : c['atk'].to_s + "/" + c['hp'].to_s %></td>
+      <!-- terrain mods -->
+      <td><% @terrain_mods.each_with_index do |e, i| %><%= unless c[e].nil? then e + " " + c[e] end %><% end %></td>
+    </tr>
+    <tr class="hidden">
+      <td colspan=3><%= c['race'] + (c['profession'].nil? ? "" : " - " + c['profession']) %></td>
+    </tr>
+    <tr class="hidden">
+      <td colspan=3><%= c['ability'] %></td>
+    </tr>
+  <% end %>
 </table>

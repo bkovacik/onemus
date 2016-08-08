@@ -1,2 +1,7 @@
-<h1>Include#header</h1>
-<p>Find me in app/views/include/header.html.erb</p>
+<div>
+  <% if flash.key?("messages") %>
+    <% flash[:messages].each do |v| %>
+      <div><%= v %></div>
+    <% end %>
+  <% end %>
+</div>
