@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   get 'welcome/index'
   get 'welcome/login'
   get 'sessions/login'
-  get 'cards/cards'
+  get 'cards/view_cards'
+  get 'cards/add_cards'
 
   post 'welcome/create' 
   post 'welcome/login' 

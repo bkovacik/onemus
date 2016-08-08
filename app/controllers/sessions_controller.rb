@@ -1,9 +1,12 @@
 class SessionsController < ApplicationController
   def login
-    unless params[:login].nil?
-      authenticate
-    else
-      logout
+    print "%", session[:user], "%", params, "%"
+    if session[:user].nil?
+      if params[:login].nil?
+        logout
+      else
+        authenticate
+      end
     end
   end
   def authenticate
@@ -26,7 +29,6 @@ class SessionsController < ApplicationController
     end
   end
   def logout
-    (flash[:messages] ||= []) << "Logged out."
     reset_session
     redirect_to "/welcome/index"
   end
