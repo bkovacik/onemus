@@ -7,11 +7,6 @@ $(document).on('click', '.card', (e) ->
   $(this).nextUntil('.card').toggle()
 )
 
-$(document).ready( ->
-  if $('body').is('.cards.add_cards')
-    switch_form($('#create_card_type'))
-)
-
 $(document).on('change', '#create_card_type', (e) ->
   switch_form(this)
 )

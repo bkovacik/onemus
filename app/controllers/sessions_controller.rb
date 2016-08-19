@@ -1,6 +1,5 @@
 class SessionsController < ApplicationController
   def login
-    print "%", session[:user], "%", params, "%"
     if session[:user].nil?
       if params[:login].nil?
         logout
@@ -10,8 +9,8 @@ class SessionsController < ApplicationController
     end
   end
   def authenticate
-    username = params[:login]["username"]
-    password = params[:login]["password"]
+    username = params[:login][:username]
+    password = params[:login][:password]
     
     user = User.where("username=?", username)
     if user.empty?
@@ -20,16 +19,20 @@ class SessionsController < ApplicationController
       return
     end
 
-    if BCrypt::Password.new(user.first["password_digest"]) == password
+    if BCrypt::Password.new(user.first[:password_digest]) == password
       session[:user] = username
-      session[:card] = user.first["card_access"]
+      session[:card] = user.first[:card_access]
+      cookies[:timeout] = Rails.application.config.session_options[:expire_after]
+      print Rails.application.config.session_options[:expire_after], "%%"
+
     else
       logout
       (flash[:messages] ||= []) << "Incorrect password."
     end
   end
   def logout
-    reset_session
+    cookies.delete(:timeout) 
+    #reset_session
     redirect_to "/welcome/index"
   end
 end

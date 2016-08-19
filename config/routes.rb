@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   get 'include/footer'
-
   get 'include/header'
 
   get 'welcome/index'
   get 'welcome/login'
   get 'sessions/login'
+  get 'sessions/logout'
   get 'cards/view_cards'
   get 'cards/add_cards'
 
