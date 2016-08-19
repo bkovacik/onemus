@@ -7,8 +7,9 @@ $(document).on('click', '.card', (e) ->
   $(this).nextUntil('.card').toggle()
 )
 
-$(window).load((e) ->
-  switch_form($('#create_card_type'))
+$(document).ready( ->
+  if $('body').is('.cards.add_cards')
+    switch_form($('#create_card_type'))
 )
 
 $(document).on('change', '#create_card_type', (e) ->
@@ -17,7 +18,7 @@ $(document).on('change', '#create_card_type', (e) ->
 
 # Switches between the different types of forms
 switch_form = (e) ->
-  $('*').hide()
+  $('*').not('body').hide()
   $('.' + $(e).val()).show()
   $('*').not('[class]').show()
 

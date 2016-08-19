@@ -5,7 +5,7 @@ class CardsController < ApplicationController
   end
   def create_card
     print params, "%"
-    user_params = params.require(:create_card).permit(:name, :ability, :atk_mod, :hit_mod, :ev_mod, :race, :hp, :atk, :cost)
+    user_params = params.require(:create_card).permit(:name, :ability, :atk_mod, :hit_mod, :ev_mod, :race, :profession, :hp, :atk, :cost)
     @card = params[:create_card][:type].capitalize.constantize.new(user_params)
 
     unless @card.save
