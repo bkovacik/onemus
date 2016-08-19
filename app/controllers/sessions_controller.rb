@@ -32,7 +32,7 @@ class SessionsController < ApplicationController
   end
   def logout
     cookies.delete(:timeout) 
-    #reset_session
+    reset_session
     redirect_to "/welcome/index"
   end
 end
