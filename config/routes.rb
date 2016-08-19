@@ -3,7 +3,6 @@ Rails.application.routes.draw do
 
   get 'include/header'
 
-  get 'create/new'
   get 'welcome/index'
   get 'welcome/login'
   get 'sessions/login'
@@ -14,6 +13,7 @@ Rails.application.routes.draw do
   post 'welcome/login' 
   post 'sessions/login'
   post 'sessions/logout'
+  post 'cards/create_card'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

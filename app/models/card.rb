@@ -1,5 +1,6 @@
 class Card < ActiveRecord::Base
-  validates :name, :ability, presence: true
+  validates :ability, presence: true
+  validates :name, presence: true, uniqueness: true
 end
 
 class Spell < Card
