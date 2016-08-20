@@ -7,13 +7,14 @@ $(document).on('click', '.card', (e) ->
   $(this).nextUntil('.card').toggle()
 )
 
-$(document).on('change', '#create_card_type', (e) ->
-  switch_form(this)
+$(document).on('change', '#create_card_type_id', (e) ->
+  switch_form(this.id)
 )
 
 # Switches between the different types of forms
-switch_form = (e) ->
+root = exports ? this
+root.switch_form = (e) ->
   $('*').not('body').hide()
-  $('.' + $(e).val()).show()
+  $('.' + $('#'+e+' option:selected').text().toLowerCase()).show()
   $('*').not('[class]').show()
 

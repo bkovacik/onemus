@@ -7,7 +7,7 @@ $(window).on('load', ->
     setTimeout(logout, Cookies.get('timeout')*1000)
 
   if $('body').is('.cards.add_cards')
-    switch_form($('#create_card_type'))
+    switch_form('create_card_type_id')
 )
 
 # Use the controller's logout.

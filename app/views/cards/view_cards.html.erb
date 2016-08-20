@@ -10,11 +10,10 @@
       <td><% @terrain_mods.each_with_index do |e, i| %><%= unless c[e].nil? then e + " " + c[e] end %><% end %></td>
     </tr>
     <tr class="hidden">
-      <td colspan=3><%= c[:race] + (c[:profession].nil? ? "" : " - " + c[:profession]) %></td>
+      <td colspan=3><%= c.type[:name].capitalize + (c[:race].empty? ? "" : " | " + c[:race]) + (c[:profession].empty? ? "" : " - " + c[:profession]) %></td>
     </tr>
     <tr class="hidden">
       <td colspan=3><%= c[:ability] %></td>
     </tr>
-    <% print session[:user] %>
   <% end %>
 </table>

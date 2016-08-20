@@ -2,8 +2,8 @@
 <h2>Add cards</h2>
 <%= form_for :create_card, url: cards_create_card_path do |f| %>
   <p>
-    <%= f.label :type %><br>
-    <%= f.select :type, options_for_select(@card_map) %>
+    <%= f.label :type_id %><br>
+    <%= f.select :type_id, options_for_select(@card_map) %>
   </p> 
 
   <p>
