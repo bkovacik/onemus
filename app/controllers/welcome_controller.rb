@@ -12,4 +12,6 @@ class WelcomeController < ApplicationController
       redirect_to "/welcome/index"
     end
   end
+  private
+    skip_before_action :require_login
 end
