@@ -10,6 +10,11 @@ class CardsController < ApplicationController
 
     redirect_to "/cards/new"
   end
+  def destroy
+    Card.find(params[:id]).destroy
+
+    redirect_to "/cards", status: "303"
+  end
   def edit
     @card = Card.find(params[:id])
     @card_map = Type.all.map { |t| [t.name.capitalize, t.id] }
@@ -29,7 +34,7 @@ class CardsController < ApplicationController
     unless @card.update(@user_params)
       flash[:messages] ||= []
       flash[:messages] += @card.errors.messages.values.flatten
-      redirect_to "/cards/add_cards"
+      redirect_to "/cards/new"
     end
 
     redirect_to "/cards"

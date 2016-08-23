@@ -12,6 +12,16 @@ $(document).on('click', '.edit_button', (e) ->
   location.replace('/cards/' + $(this).val() + '/edit')
 )
 
+# Redirects to the delete page for a certain card
+$(document).on('click', '.delete_button', (e) ->
+  if confirm('Are you sure you want to delete this card?')
+    $.ajax({
+      url: '/cards/' + $(this).val()
+      method: 'DELETE'
+      success: location.refresh()
+    })
+)
+
 $(document).on('change', '#card_type_id', (e) ->
   switch_form(this.id)
 )
