@@ -16,8 +16,10 @@
       <td colspan=4><%= c[:ability] %></td>
     </tr>
     <!-- edit/delete buttons -->
-    <tr class="hidden">
-      <td><button class="edit_button" value="<%= c[:id] %>">Edit</button><button class="delete_button" value="<%= c[:id] %>">Delete</button></td>
-    </tr>
+    <% if session[:card] %>
+      <tr class="hidden">
+        <td><button class="edit_button" value="<%= c[:id] %>">Edit</button><button class="delete_button" value="<%= c[:id] %>">Delete</button></td>
+      </tr>
+    <% end %>
   <% end %>
 </table>

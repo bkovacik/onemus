@@ -47,5 +47,7 @@ ActiveRecord::Schema.define(version: 20160820165514) do
     t.datetime "updated_at"
   end
 
+  add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
+
   add_foreign_key "cards", "types"
 end

@@ -41,6 +41,16 @@ class CardsController < ApplicationController
   end
 
   private
+    before_action :require_card_privs
+    skip_before_action :require_card_privs, only: [:index]
+
+    def require_card_privs
+      unless session[:card]
+        flash[:messages] ||= []
+        flash[:messages] << "Insufficient card privileges."
+        redirect_to "/cards"
+      end
+    end
     def set_uparams
       @user_params = params.require(:card).permit(:name, :type_id, :ability, :atk_mod, :hit_mod, :ev_mod, :race, :profession, :hp, :atk, :cost)
     end
