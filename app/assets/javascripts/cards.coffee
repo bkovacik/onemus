@@ -7,14 +7,19 @@ $(document).on('click', '.card', (e) ->
   $(this).nextUntil('.card').toggle()
 )
 
-$(document).on('change', '#create_card_type_id', (e) ->
+# Redirects to the edit page for a certain card
+$(document).on('click', '.edit_button', (e) ->
+  location.replace('/cards/' + $(this).val() + '/edit')
+)
+
+$(document).on('change', '#card_type_id', (e) ->
   switch_form(this.id)
 )
 
 # Switches between the different types of forms
 root = exports ? this
 root.switch_form = (e) ->
-  $('*').not('body').hide()
-  $('.' + $('#'+e+' option:selected').text().toLowerCase()).show()
-  $('*').not('[class]').show()
+  $('p').show()
+  $('p').not('.' + $('#'+e+' option:selected').text().toLowerCase()).hide()
+  $('p').not('[class]').show()
 

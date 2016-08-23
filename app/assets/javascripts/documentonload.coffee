@@ -6,8 +6,9 @@ $(window).on('load', ->
   if Cookies.get('timeout')
     setTimeout(logout, Cookies.get('timeout')*1000)
 
-  if $('body').is('.cards.add_cards')
-    switch_form('create_card_type_id')
+  if $('body').is('.cards')
+    if $('body').is('.edit, .new')
+      switch_form('card_type_id')
 )
 
 # Use the controller's logout.

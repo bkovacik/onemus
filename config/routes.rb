@@ -6,20 +6,19 @@ Rails.application.routes.draw do
   get 'welcome/login'
   get 'sessions/login'
   get 'sessions/logout'
-  get 'cards/view_cards'
-  get 'cards/add_cards'
 
   post 'welcome/create' 
   post 'welcome/login' 
   post 'sessions/login'
   post 'sessions/logout'
-  post 'cards/create_card'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   root 'welcome#index'
+
+  resources :cards
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
