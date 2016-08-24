@@ -1,0 +1,38 @@
+$base-colors: (
+  'background': #6F3F00
+);
+
+@function base-color($key) {
+  @return map-get($base-colors, $key);
+}
+
+* {
+  font-family: Helvetica, sans-serif;
+}
+
+body {
+  background-color: base-color('background');
+  margin-top: 0;
+}
+
+.container {
+  background-color: #FFF;
+  border-radius: 0px 0px 50px 50px;
+  box-shadow: 0 0 40px;
+  padding: 40px;
+  width: 1000px;
+}
+
+.content {
+  width: 800px;
+}
+
+.centered {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.text-centered {
+  text-align: center;
+  margin: 10px;
+}

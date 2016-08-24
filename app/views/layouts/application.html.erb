@@ -7,20 +7,24 @@
   <%= csrf_meta_tags %>
 </head>
 <body class="<%= controller_name %> <%= action_name %>">
-  <ul>
-    <% if flash.key?("messages") %>
-      <% flash[:messages].each do |v| %>
-        <li><%= v %></li>
+  <div class="container centered">
+    <div class="content centered">
+      <% if @sess_user %>
+        <p>#Header goes here!</p>
       <% end %>
-    <% end %>
-  </ul>
 
-<% if @sess_user %>
-  <p>#Header goes here!</p>
-<% end %>
+        <ul>
+          <% if flash.key?("messages") %>
+            <% flash[:messages].each do |v| %>
+              <li><%= v %></li>
+            <% end %>
+          <% end %>
+        </ul>
 
-<%= yield %>
+      <%= yield %>
+    </div>
+  </div>
 
-<p>#Footer goes here!</p>
+<div class="text-centered">#Footer goes here!</div>
 </body>
 </html>
