@@ -10,3 +10,8 @@ types = ['creature', 'hero', 'spell', 'terrain']
 types.each do |type|
   Type.create(name: type)
 end  
+
+chromas = ['anger', 'apathy', 'entropy', 'greed', 'order', 'pride', 'colorless']
+chromas.each do |chroma|
+  Chroma.create(name: chroma)
+end

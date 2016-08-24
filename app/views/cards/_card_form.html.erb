@@ -1,9 +1,13 @@
-<%#= form_for @card, url: cards_create_card_path do |f| %>
 <%= form_for @card do |f| %>
   <p>
     <%= f.label :type_id %><br>
-    <%= f.select :type_id, options_for_select(@card_map, @card.type_id || 1)  %>
+    <%= f.select :type_id, options_for_select(@type_map, @card.type_id || 1)%>
   </p> 
+
+  <p>
+    <%= f.label :chroma_ids %><br>
+    <%= f.select :chroma_ids, options_for_select(@chroma_map, @card.chroma_ids.empty? ? 1 : @card.chroma_ids), {include_hidden: false}, {multiple: true} %>
+  </p>
 
   <p>
     <%= f.label :name %><br>
