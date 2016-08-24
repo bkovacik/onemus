@@ -1,14 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= @title%></title>
+  <title><%= "Onemus - " + controller_name.capitalize + "/" + action_name.capitalize %></title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body class="<%= controller_name %> <%= action_name %>">
+  <ul>
+    <% if flash.key?("messages") %>
+      <% flash[:messages].each do |v| %>
+        <li><%= v %></li>
+      <% end %>
+    <% end %>
+  </ul>
+
+<% if @sess_user %>
+  <p>#Header goes here!</p>
+<% end %>
 
 <%= yield %>
 
+<p>#Footer goes here!</p>
 </body>
 </html>

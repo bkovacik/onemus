@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
     redirect_to "/welcome/index"
   end
   private
-    skip_before_action :require_login, only: [:login]
+    skip_before_action :require_login
 
     def authenticate
       username = params[:login][:username]
@@ -30,9 +30,9 @@ class SessionsController < ApplicationController
       if BCrypt::Password.new(user.first[:password_digest]) == password
         session[:user] = username
         session[:card] = user.first[:card_access]
-        cookies[:timeout] = Rails.application.config.session_options[:expire_after]
-        print Rails.application.config.session_options[:expire_after], "%%"
+        set_session
 
+        cookies[:timeout] = Rails.application.config.session_options[:expire_after]
       else
         logout
         (flash[:messages] ||= []) << "Incorrect password."

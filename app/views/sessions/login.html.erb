@@ -1,5 +1,6 @@
-<%= render partial: "/include/header.html.erb" %>
-<p>Welcome, <%= session[:user] %>!</p>
-<ul><li><a href="/cards/view_cards">Create/edit cards</a></li></ul>
+<p>Welcome, <%= @sess_user %>!</p>
+<ul>
+  <li><a href="/cards">View cards</a></li>
+  <li><a href="/cards/new">Create cards</a></li>
+</ul>
 <%= button_to 'Log out', action: "logout" %>
-<%= render partial: "/include/footer.html.erb" %>
