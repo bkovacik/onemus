@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'game/index'
+
   get 'include/footer'
   get 'include/header'
 
@@ -6,6 +8,8 @@ Rails.application.routes.draw do
   get 'welcome/login'
   get 'sessions/login'
   get 'sessions/logout'
+  get 'game/index'
+  get 'game' => 'game#index'
 
   post 'welcome/create' 
   post 'welcome/login' 

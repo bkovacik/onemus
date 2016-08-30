@@ -9,6 +9,9 @@ $(window).on('load', ->
   if $('body').is('.cards')
     if $('body').is('.edit, .new')
       switch_form('card_type_id')
+  else if $('body').is('.game')
+    initSocket()
+    createGameChannel()
 )
 
 # Use the controller's logout.
