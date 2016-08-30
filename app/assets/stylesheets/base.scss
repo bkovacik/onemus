@@ -1,9 +1,18 @@
 $base-colors: (
-  'background': #6F3F00
+  'background': #A50,
+  'border': #888
 );
 
-@function base-color($key) {
+@function color($key) {
   @return map-get($base-colors, $key);
+}
+
+@function mix-up($color, $level: 0) {
+  @return mix($color, #FFf, $level);
+}
+
+@function mix-down($color, $level: 0) {
+  @return mix($color, #777, $level);
 }
 
 * {
@@ -11,8 +20,23 @@ $base-colors: (
 }
 
 body {
-  background-color: base-color('background');
+  background-color: color('background');
   margin-top: 0;
+}
+
+table {
+  border-radius: 30px;
+  border-spacing: 0;
+  padding: 40px 0;
+  width: 100%;
+}
+
+table {
+  border: 1px solid color('border');
+}
+
+tr.even {
+  background-color: mix-up(color('border'), 50%);
 }
 
 .container {
