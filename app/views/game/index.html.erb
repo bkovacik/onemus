@@ -1,2 +1,19 @@
-<h1>Game#index</h1>
-<p>Find me in app/views/game/index.html.erb</p>
+<h2>Rooms</h2>
+<table>
+  <% @rooms.each do |room|%>
+    <% numUsers = UsersRooms.where("room_id=#{room.id}").distinct.count %>
+    <tr>
+      <td><%= link_to_if (room.capacity.nil? or room.capacity > numUsers), room.name, { controller: "game", action: "show", id: room.id } %></td>
+      <td><%= numUsers.to_s + (room.capacity.nil? ? "" : "/#{room.capacity.to_s}") %></td>
+    </tr>
+  <% end %>
+</table>
+<div>
+  <%= form_for @newRoom, url: game_create_path do |r| %>
+    <%= r.label :name %>
+    <%= r.text_field :name %>
+    <%= r.label :capacity %>
+    <%= r.text_field :capacity %>
+    <%= r.submit "Make new room" %>
+  <% end %>
+</div>

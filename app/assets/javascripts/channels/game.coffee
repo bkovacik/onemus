@@ -1,11 +1,16 @@
 root = exports ? this
 root.createGameChannel = () ->
-  App.game = App.cable.subscriptions.create "GameChannel",
+  # room param should always be in this location
+  room = location.pathname.split('/')[2]
+
+  App.game = App.cable.subscriptions.create { channel: "GameChannel", room: room },
     connected: ->
-      # Called when the subscription is ready for use on the server
 
     disconnected: ->
       # Called when the subscription has been terminated by the server
 
     received: (data) ->
-      # Called when there's incoming data on the websocket for this channel
+      console.log(data.message)
+
+    ping: ->
+      @perform("ping")

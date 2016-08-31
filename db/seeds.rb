@@ -15,3 +15,5 @@ chromas = ['anger', 'apathy', 'entropy', 'greed', 'order', 'pride', 'colorless']
 chromas.each do |chroma|
   Chroma.create(name: chroma)
 end
+
+Room.create(name: "Lobby")

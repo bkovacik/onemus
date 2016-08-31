@@ -10,11 +10,13 @@ Rails.application.routes.draw do
   get 'sessions/logout'
   get 'game/index'
   get 'game' => 'game#index'
+  get 'game/:id' => 'game#show'
 
   post 'welcome/create' 
   post 'welcome/login' 
   post 'sessions/login'
   post 'sessions/logout'
+  post 'game/create'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
