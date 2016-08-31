@@ -31,6 +31,9 @@ gem 'js_cookie_rails'
 # Use Puma as the app server
 gem 'puma'
 
+# Use redis
+gem 'redis'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
