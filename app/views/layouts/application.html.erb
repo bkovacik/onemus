@@ -8,23 +8,26 @@
 </head>
 <body class="<%= controller_name %> <%= action_name %>">
   <div class="container centered">
-    <div class="content centered">
-      <% if @sess_user %>
+    <% if @sess_user %>
+      <div class="header foreground">
         <p>#Header goes here!</p>
-      <% end %>
+      </div>
+    <% end %>
 
-        <ul>
-          <% if flash.key?("messages") %>
-            <% flash[:messages].each do |v| %>
-              <li><%= v %></li>
-            <% end %>
+    <div class="content centered foreground">
+      <ul>
+        <% if flash.key?("messages") %>
+          <% flash[:messages].each do |v| %>
+            <li><%= v %></li>
           <% end %>
-        </ul>
+        <% end %>
+      </ul>
 
       <%= yield %>
+
+      <div class="text-centered">#Footer goes here!</div>
     </div>
   </div>
 
-<div class="text-centered">#Footer goes here!</div>
 </body>
 </html>

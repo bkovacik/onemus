@@ -1,18 +1,21 @@
 $base-colors: (
   'background': #A50,
-  'border': #888
+  'foreground': #ECD079,
+  'text': #502800
 );
+
+$shadowOffset: 20px;
 
 @function color($key) {
   @return map-get($base-colors, $key);
 }
 
 @function mix-up($color, $level: 0) {
-  @return mix($color, #FFf, $level);
+  @return mix(#FFF, $color, $level);
 }
 
 @function mix-down($color, $level: 0) {
-  @return mix($color, #777, $level);
+  @return mix(#000, $color, $level);
 }
 
 * {
@@ -21,34 +24,32 @@ $base-colors: (
 
 body {
   background-color: color('background');
-  margin-top: 0;
+  margin: 0;
+}
+
+p, ul {
+  margin: 0;
 }
 
 table {
-  border-radius: 30px;
   border-spacing: 0;
-  padding: 40px 0;
+  margin: 16px 0;
   width: 100%;
 }
 
-table {
-  border: 1px solid color('border');
-}
-
 tr.even {
-  background-color: mix-up(color('border'), 50%);
+  background-color: mix-up(color('text'), 40%);
 }
 
 .container {
-  background-color: #FFF;
-  border-radius: 0px 0px 50px 50px;
-  box-shadow: 0 0 40px;
-  padding: 40px;
+  height: 100vh;
   width: 1000px;
 }
 
 .content {
-  width: 800px;
+  box-shadow: 0 0 $shadowOffset;
+  height: 100%;
+  padding: 20px 40px 0; 
 }
 
 .centered {
@@ -56,7 +57,16 @@ tr.even {
   margin-right: auto;
 }
 
+.foreground {
+  background-color: color('foreground');
+}
+
+.header {
+  box-shadow: 0 0 $shadowOffset;
+  height: 100px;
+  margin-bottom: $shadowOffset;
+}
+
 .text-centered {
   text-align: center;
-  margin: 10px;
 }

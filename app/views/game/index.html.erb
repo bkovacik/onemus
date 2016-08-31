@@ -2,7 +2,7 @@
 <table>
   <% @rooms.each do |room|%>
     <% numUsers = UsersRooms.where("room_id=#{room.id}").distinct.count %>
-    <tr>
+    <tr class=<%= cycle('odd', 'even') %>>
       <td><%= link_to_if (room.capacity.nil? or room.capacity > numUsers), room.name, { controller: "game", action: "show", id: room.id } %></td>
       <td><%= numUsers.to_s + (room.capacity.nil? ? "" : "/#{room.capacity.to_s}") %></td>
     </tr>
