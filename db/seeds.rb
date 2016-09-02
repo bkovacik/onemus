@@ -3,17 +3,22 @@
 #
 # Examples:
 #
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+#   cities = City.find_or_create_by([{ name: 'Chicago' }, { name: 'Copenhagen' }])
+#   Mayor.find_or_create_by(name: 'Emanuel', city: cities.first)
 
 types = ['creature', 'hero', 'spell', 'terrain']
 types.each do |type|
-  Type.create(name: type)
+  Type.find_or_create_by(name: type)
 end  
 
 chromas = ['anger', 'apathy', 'entropy', 'greed', 'order', 'pride', 'colorless']
 chromas.each do |chroma|
-  Chroma.create(name: chroma)
+  Chroma.find_or_create_by(name: chroma)
 end
 
-Room.create(name: "Lobby")
+Room.find_or_create_by(name: "Lobby")
+
+phases = ['refresh', 'terrain', 'draw', 'summoning 1', 'action', 'summoning 2', 'capture', 'end']
+phases.each do |phase|
+  Phase.find_or_create_by(name: phase)
+end

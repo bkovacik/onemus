@@ -12,5 +12,8 @@ root.createGameChannel = () ->
     received: (data) ->
       console.log(data.message)
 
-    ping: ->
-      @perform("ping")
+    ping: (data) ->
+      @perform("ping", message: data)
+
+    advance_phase: ->
+      @perform("advance_phase")

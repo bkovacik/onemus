@@ -5,7 +5,7 @@ module ApplicationCable
 
     def connect
       #Sets u_id to session[:user] 
-      self.u_id = cookies.encrypted[Rails.application.config.session_options[:key]]['user']
+      self.u_id = User.find_by(username: cookies.encrypted[Rails.application.config.session_options[:key]]['user']).id
     end
   end
 end

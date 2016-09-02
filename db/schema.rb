@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160830201600) do
+ActiveRecord::Schema.define(version: 20160901185313) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,9 +43,31 @@ ActiveRecord::Schema.define(version: 20160830201600) do
     t.datetime "updated_at"
   end
 
+  create_table "games", force: :cascade do |t|
+    t.integer  "phase_id"
+    t.integer  "turn_player_id"
+    t.integer  "room_id"
+    t.integer  "turn"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  create_table "phases", force: :cascade do |t|
+    t.string "name"
+  end
+
+  create_table "players", force: :cascade do |t|
+    t.integer  "game_id"
+    t.integer  "user_id"
+    t.integer  "order"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "rooms", force: :cascade do |t|
     t.string   "name"
     t.integer  "capacity"
+    t.integer  "game_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -60,6 +82,7 @@ ActiveRecord::Schema.define(version: 20160830201600) do
     t.string   "username"
     t.string   "password_digest"
     t.boolean  "card_access",     default: false, null: false
+    t.integer  "player_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -72,6 +95,13 @@ ActiveRecord::Schema.define(version: 20160830201600) do
   add_foreign_key "cards", "types"
   add_foreign_key "cards_chroma", "cards"
   add_foreign_key "cards_chroma", "chroma"
+  add_foreign_key "games", "phases"
+  add_foreign_key "games", "players", column: "turn_player_id"
+  add_foreign_key "games", "rooms"
+  add_foreign_key "players", "games"
+  add_foreign_key "players", "users"
+  add_foreign_key "rooms", "games"
+  add_foreign_key "users", "players"
   add_foreign_key "users_rooms", "rooms"
   add_foreign_key "users_rooms", "users"
 end
