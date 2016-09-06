@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160901185313) do
+ActiveRecord::Schema.define(version: 20160906144112) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "card_positions", force: :cascade do |t|
+    t.integer  "player_id"
+    t.integer  "card_id"
+    t.integer  "zone_id"
+    t.integer  "location_x"
+    t.integer  "location_y"
+    t.integer  "order"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "cards", force: :cascade do |t|
     t.integer  "type_id"
@@ -92,6 +103,15 @@ ActiveRecord::Schema.define(version: 20160901185313) do
     t.integer "room_id"
   end
 
+  create_table "zones", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "card_positions", "cards"
+  add_foreign_key "card_positions", "players"
+  add_foreign_key "card_positions", "zones"
   add_foreign_key "cards", "types"
   add_foreign_key "cards_chroma", "cards"
   add_foreign_key "cards_chroma", "chroma"
