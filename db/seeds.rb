@@ -22,3 +22,8 @@ phases = ['refresh', 'terrain', 'draw', 'summoning 1', 'action', 'summoning 2', 
 phases.each do |phase|
   Phase.find_or_create_by(name: phase)
 end
+
+zones = ['deck', 'terrain_deck', 'removed from play', 'hand', 'in play', 'revealed']
+zones.each do |zone|
+  Zone.find_or_create_by(name: zone)
+end
