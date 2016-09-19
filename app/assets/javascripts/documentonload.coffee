@@ -11,6 +11,8 @@ $(window).on('load', ->
       switch_form('card_type_id')
   else if $('body').is('.game')
     if !$('body').is('.index')
+      initCanvas()
+      initGameHandlers()
       initSocket()
       createGameChannel()
 )
