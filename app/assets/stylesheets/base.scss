@@ -24,7 +24,12 @@ $shadowOffset: 20px;
 
 body {
   background-color: color('background');
+  height: 100%;
   margin: 0;
+}
+
+html {
+  height: 100%;
 }
 
 p, ul {
@@ -42,13 +47,13 @@ tr.even {
 }
 
 .container {
-  height: 100vh;
+  height: 100%;
   width: 1000px;
 }
 
 .content {
   box-shadow: 0 0 $shadowOffset;
-  height: 100%;
+  min-height: 100%;
   padding: 20px 40px 0; 
 }
 
@@ -69,4 +74,10 @@ tr.even {
 
 .text-centered {
   text-align: center;
+}
+
+#game-canvas {
+  background-color: white;
+  height: 600px;
+  width: 100%;
 }
