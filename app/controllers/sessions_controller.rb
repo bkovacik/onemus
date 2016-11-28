@@ -6,12 +6,18 @@ class SessionsController < ApplicationController
       else
         authenticate
       end
+    else
+      unless params[:login].nil?
+        if session[:user] != params[:login][:username]
+          logout_no_redirect
+          authenticate
+        end
+      end
     end
   end
   def logout
-    cookies.delete(:timeout) 
-    reset_session
-    redirect_to "/welcome/index"
+    logout_no_redirect
+    redirect_to :welcome_index
   end
   private
     skip_before_action :require_login
@@ -37,5 +43,9 @@ class SessionsController < ApplicationController
         logout
         (flash[:messages] ||= []) << "Incorrect password."
       end
+    end
+    def logout_no_redirect
+      cookies.delete(:timeout) 
+      reset_session
     end
 end

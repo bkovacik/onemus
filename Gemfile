@@ -10,7 +10,8 @@ gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
-gem 'coffee-script-source', '1.10.0'
+# Use 1.8 to work on Windows
+gem 'coffee-script-source', '1.8.0'
 gem 'coffee-rails', '~> 4.2.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
@@ -33,6 +34,16 @@ gem 'puma'
 
 # Use redis
 gem 'redis'
+
+group :test do
+  # Use cucumber for setting up tests
+  gem 'cucumber', require: false
+  gem 'cucumber-rails', require: false
+  # Use RSpec for testing
+  gem 'rspec-rails', require: false
+  # Cucumber requires database_cleaner if we have a database
+  gem 'database_cleaner'
+end
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
