@@ -1,4 +1,4 @@
-class CreateChroma < ActiveRecord::Migration
+class CreateChroma < ActiveRecord::Migration[4.2]
   def change
     create_table :chroma do |t|
       t.string :name

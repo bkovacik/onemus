@@ -1,4 +1,4 @@
-class CreateCardsChroma < ActiveRecord::Migration
+class CreateCardsChroma < ActiveRecord::Migration[4.2]
   def change
     create_table :cards_chroma, id: false do |t|
       t.integer :card_id
